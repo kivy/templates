@@ -122,6 +122,12 @@ celerybeat.pid
 # Environments
 .env
 .venv
+
+.DS_Store
+
+/build/
+/bin/
+
 env/
 venv/
 ENV/

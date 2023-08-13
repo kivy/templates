@@ -1,0 +1,7 @@
+# Root Widget of our app Structure, there can be only 1! - "Duncan McLeod"
+Button:
+	text: 'Hello'
+	on_release:
+	    # Everything to the right of `:` is a python expression
+	    # left of `:` is property/event if starting with lowercase or a Widget if starting with `U`pper case letter.
+		self.text = {'Hello': 'World', 'World': 'Hello'}[self.text]
