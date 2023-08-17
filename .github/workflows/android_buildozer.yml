@@ -13,24 +13,10 @@ jobs:
     if: github.event_name != 'pull_request' && (github.event_name == 'schedule' || (github.event_name == 'create' && github.event.ref_type == 'tag') || contains(github.event.head_commit.message, '[build android apk]')) || contains(github.event.pull_request.title, '[build android apk]')
 
     steps:
-      - uses: actions/checkout@v2
-
-      # used to cache dependencies with a timeout
-      - name: Get Date
-        id: get-date
-        run: |
-          echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
-        shell: bash
-
-      - name: Cache Buildozer global directory
-        uses: actions/cache@v3
-        with:
-          path: build/android
-          key: buildozer-global-${{ hashFiles('tools/build/buildozer.spec') }} # Replace with your path
-
+      - uses: actions/checkout@v3
       - name: setup docker
         id: buildozer
-        run: docker build . -t local -f tools/build/Dockerfile
+        run: docker build . -t local -f tools/build/build_android.dockerfile
       - name: build with buildozer
         run: docker run -i -v $PWD:/srv -w/srv local /bin/bash ./tools/build/build_android.sh
 

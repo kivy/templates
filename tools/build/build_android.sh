@@ -5,6 +5,8 @@ ROOT=$(realpath $(dirname "$0")/../..)
 
 [[ -d "$ROOT"/build/android ]] || mkdir -p "$ROOT"/build/android
 
+chown -R root build/android
+
 (
   cd "$ROOT"/build/android
   export HOME="$PWD"
@@ -15,7 +17,7 @@ ROOT=$(realpath $(dirname "$0")/../..)
   source venv/bin/activate
 
   python3 -m pip install --upgrade pip
-  python3 -m pip install -r "$ROOT"/tools/build/requirements_build_android.txt
+  python3 -m pip install --force-reinstall -r "$ROOT"/tools/build/requirements_build_android.txt
 
   # Remove APK if exists
   rm -rf bin
