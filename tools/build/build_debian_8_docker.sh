@@ -9,7 +9,7 @@ export GIT_COMMITTER_NAME="Jenkins"
 export GIT_COMMITTER_EMAIL="ci@test.com"
 
 # Build
-xvfb-run -s "-screen 0 1280x1024x24" tools/build/build_linux.sh
+xvfb-run -s "-screen 0 1280x1024x24" /bin/bash tools/build/build_linux.sh
 
 # Rename executable
 mv build/linux/dist/helloworld.run \
