@@ -10,7 +10,7 @@ This repository provides the following features.
   - Windows Builds(WIP)
   - Linux Builds(Working)
   - OSX DMG Builds(Working)
-  - Android Bulds(WIP)
+  - Android Bulds(Working)
   - iOs Builds(WIP)
 - Demo of howtos for kivy supposed to work as a hands on demonstration on how to do X in kivy...
   - Packaging(WIP)
