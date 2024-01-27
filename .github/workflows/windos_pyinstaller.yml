@@ -1,0 +1,34 @@
+name: Windows Pyinstaller
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 1,15 * *'
+
+env:
+  GST_REGISTRY: '~/registry.bin'
+  KIVY_GL_BACKEND: 'angle_sdl2'
+  SETUPTOOLS_USE_DISTUTILS: local
+
+jobs:
+  windows_pyinstaller:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python: [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12' ]
+        arch: ['x64', 'x86']
+   if: github.event_name != 'pull_request' && (github.event_name == 'schedule' || (github.event_name == 'create' && github.event.ref_type == 'tag') || contains(github.event.head_commit.message, '[build windows run]')) || contains(github.event.pull_request.title, '[build windows run]')
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python }}
+        architecture: ${{ matrix.arch }}
+    - name: Generate version metadata
+      run: |
+        tools/build/build_windows.sh
