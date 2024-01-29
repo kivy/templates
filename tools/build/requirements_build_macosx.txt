@@ -1,1 +1,2 @@
+setuptools==63.2.0
 git+https://github.com/kivy/buildozer.git@master
