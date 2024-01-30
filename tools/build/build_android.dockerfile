@@ -5,7 +5,7 @@ RUN : \
     \
     # Buildozer \
     && apt-get install -y --no-install-recommends autoconf automake build-essential \
-               ccache cmake default-jdk gettext git libffi-dev libltdl-dev libssl-dev \
+               ccache cmake openjdk-17-jdk gettext git libffi-dev libltdl-dev libssl-dev \
                libtool patch pkg-config unzip zip zlib1g-dev \
     \
     # Python 3.8 \
