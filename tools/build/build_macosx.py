@@ -27,10 +27,12 @@ shutil.copy('tools/build/requirements_build_macosx.txt', f'{BUILD_DIR}/')
 os.chdir(BUILD_DIR)
 
 commands = [
-	f'{sys.executable} -m pip install docopts',
-	f'{sys.executable} -m pip install -r requirements_build_macosx.txt',
-	'buildozer -v osx debug']
+	f'{sys.executable} -m venv ./venv',
+	f'./venv/bin/python -m pip install docopts',
+	f'./venv/bin/python -m pip install -r requirements_build_macosx.txt',
+	'./venv/bin/buildozer -v osx debug']
 
 import subprocess
 for cmd in commands:
+	print(f'cmd: {cmd}')
 	subprocess.run(cmd.split(' '))

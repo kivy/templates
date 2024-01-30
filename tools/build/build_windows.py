@@ -38,8 +38,11 @@ for cmd in commands.split('\n'):
 # sanity check
 package = f'{root_app_dir}/dist/helloworld.exe'
 
+
 if os.path.exists(package):
   print(f"Successfully built {package}")
+  #include_arch(arch.arch)
+  #include_version(version.version)
 else:
   subprocess.run(['tree'])
   raise('Failed to build package...')
