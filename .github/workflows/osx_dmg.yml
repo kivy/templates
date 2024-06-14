@@ -28,6 +28,10 @@ jobs:
     - name: Make app bundle
       run:
         python3 tools/build/build_macosx.py
+    - uses: actions/upload-artifact@v2
+      with:
+        name: osx_dmg
+        path: ./build/bin/HelloWorld.dmg
     - name: Delete Old Artifacts
       uses: actions/github-script@v6
       id: artifact
@@ -45,7 +49,3 @@ jobs:
                 artifact_id: id,
               })
             })
-    - uses: actions/upload-artifact@v2
-      with:
-        name: osx_dmg
-        path: ./build/bin/KivyHelloWorld.dmg
